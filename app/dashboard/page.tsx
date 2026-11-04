@@ -3,6 +3,7 @@ import { getSession } from '@/lib/session'
 import { prisma } from '@/lib/prisma'
 import Link from 'next/link'
 import AddContactForm from '@/components/AddContactForm'
+import AddDealForm from '@/components/AddDealForm'
 export default async function Dash() {
   const s = await getSession()
   if (!s) redirect('/login')
@@ -22,6 +23,7 @@ export default async function Dash() {
         <div className="bg-white p-4 rounded shadow"><p className="text-sm text-gray-500">Pipeline</p><p className="text-2xl font-bold">${total.toLocaleString()}</p></div>
       </div>
       <AddContactForm />
+      <AddDealForm />
       <div className="bg-white rounded shadow mb-6">
         <div className="p-4 border-b font-semibold">Contacts</div>
         {contacts.map((c: any) => <div key={c.id} className="p-4 border-b text-sm"><span className="font-medium">{c.name}</span> {c.company && <span className="text-gray-500">· {c.company}</span>}</div>)}
